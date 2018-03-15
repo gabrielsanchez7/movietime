@@ -3,8 +3,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Quicksand', sans-serif;
-  color: #585858;
+  font-family: "Quicksand", sans-serif;
+  color: #333;
   font-weight: normal;
 }
 
@@ -16,16 +16,22 @@ a {
   text-decoration: none;
 }
 
-.block-center {
+header > div, footer .footer-media, #pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) .hover {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.block-between {
+header, footer .copyright, #pageHome .banner-home .banner-detail .banner-options, #pageHome #estrenos #lista-estrenos > div:not(.scrollbar), #pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) .hover .clasificacion {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: auto;
 }
 
 /* Header style */
@@ -180,6 +186,12 @@ footer .footer-media li:nth-child(3) a:hover {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
+#pageHome .banner-home .control-banner span {
+  display: block;
+  height: 100%;
+  width: calc(100% / 4);
+  background-color: #c93030;
+}
 #pageHome .banner-home .banner-detail {
   position: absolute;
   top: 150px;
@@ -242,6 +254,141 @@ footer .footer-media li:nth-child(3) a:hover {
 }
 #pageHome .banner-home .banner-detail .banner-options a:hover {
   background-color: #E89212;
+}
+#pageHome #estrenos {
+  position: relative;
+  padding: 80px 0;
+}
+#pageHome #estrenos h3 {
+  font-family: "Passion One", cursive;
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) {
+  overflow: hidden;
+  width: 92%;
+  margin: auto;
+  padding-bottom: 30px;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article {
+  cursor: pointer;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article:not(:last-child) {
+  margin-right: 30px;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) {
+  position: relative;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle):hover .hover {
+  opacity: 1;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) .hover {
+  transition: 0.25s;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) .hover .fa-play {
+  color: #E89212;
+  background-color: rgba(232, 146, 18, 0.25);
+  border: 1px solid #E89212;
+  line-height: 43px;
+  width: 45px;
+  display: block;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 20px;
+  padding-left: 3px;
+  transition: 0.25s;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) .hover .fa-play:hover {
+  background-color: #E89212;
+  color: #fff;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) .hover .clasificacion {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  padding: 0 15px;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) .hover .clasificacion .fa-star, #pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) .hover .clasificacion .fa-star-half-o {
+  color: #E89212;
+  font-size: 15px;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) .hover .clasificacion .fa-heart, #pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) .hover .clasificacion .fa-bookmark {
+  color: rgba(201, 48, 48, 0.25);
+  -webkit-text-stroke: 1px #c93030;
+  font-size: 20px;
+  margin-left: 3px;
+  transition: 0.25s;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) .hover .clasificacion .fa-heart:hover, #pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) .hover .clasificacion .fa-bookmark:hover {
+  color: #c93030;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article > div:not(.detalle) img {
+  display: block;
+  height: 100%;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article .detalle {
+  padding: 15px;
+  background-color: #EBEBEB;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article .detalle h4 {
+  font-family: "Passion One", cursive;
+  font-size: 26px;
+}
+#pageHome #estrenos #lista-estrenos > div:not(.scrollbar) article .detalle h5 {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+#pageHome #estrenos #lista-estrenos .scrollbar {
+  display: block;
+  width: 92%;
+  height: 10px;
+  background-color: #EBEBEB;
+  margin: auto;
+}
+#pageHome #estrenos #lista-estrenos .scrollbar span {
+  display: block;
+  width: 500px;
+  background-color: #c93030;
+  height: 100%;
+  cursor: pointer;
+}
+#pageHome #estrenos #control-estrenos {
+  position: absolute;
+  top: calc(50% - 40px);
+  width: 100%;
+}
+#pageHome #estrenos #control-estrenos span {
+  font-size: 80px;
+  -webkit-text-stroke: 3px #c93030;
+  opacity: 0.4;
+  position: absolute;
+  color: transparent;
+  cursor: pointer;
+  transition: 0.25s;
+}
+#pageHome #estrenos #control-estrenos span.fa-caret-right {
+  right: 0;
+}
+#pageHome #estrenos #control-estrenos span.fa-caret-left {
+  left: 0;
+}
+#pageHome #estrenos #control-estrenos span:hover {
+  color: #c93030;
+  opacity: 1;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,58 +1,60 @@
 /* General style */
-
-$font-general: 'Quicksand', sans-serif;
-$font-title: 'Passion One', cursive;
-$font-size: 14px;
-$font-size-small: 12px;
-$font-size-medium: 16px;
-$color-red-base: #c93030;
-$color-text-base: #585858;
-$color-red-50: rgba(201, 48, 48, 0.5);
-$color-red-25: rgba(201, 48, 48, 0.25);
-$color-white: #EBEBEB;
-$color-dark: #020202;
-$color-yellow: #E89212;
-$color-yellow-25: rgba(232, 146, 18, 0.25);
+$fontGeneral: 'Quicksand', sans-serif;
+$fontTitle: 'Passion One', cursive;
+$rojo: #c93030;
+$negroBase: #333;
+$rojo-50: rgba(201, 48, 48, 0.5);
+$rojo-25: rgba(201, 48, 48, 0.25);
+$lightgray: #EBEBEB;
+$dark: #020202;
+$ambar: #E89212;
+$ambar-25: rgba(232, 146, 18, 0.25);
 $transition: 0.25s;
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Quicksand', sans-serif;
-	color: #585858;
+	font-family: $fontGeneral;
+	color: $negroBase;
 	font-weight: normal;
 }
 
 ul { list-style: none; }
 a { text-decoration: none; }
 
-.block-center {
+%block-center {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.block-between {
+%block-between {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
+.container {
+	max-width: 1280px;
+	width: 100%;
+	margin: auto;
+}
+
 /* Header style */
 
 header {
+	@extend %block-between;
 	position: absolute;
 	top: 0;
 	background-color: rgba(0, 0, 0, 0.3);
-	border-bottom: 2px solid $color-red-50;
+	border-bottom: 2px solid $rojo-50;
 	width: 100%;
 	padding: 0 30px;
 	z-index: 100;
-	
+	& > div { @extend %block-center; }
 	#menuHeader {
 		display: flex;
-		
 		a {
 			line-height: 75px;
 			color: #777;
@@ -62,15 +64,13 @@ header {
 			height: 100%;
 			width: 100%;
 			display: block;
-			font-size: $font-size;
-			
+			font-size: 14px;
 			&:hover {
-				background-color: $color-red-50;
+				background-color: $rojo-50;
 				color: #fff;
 			}
 		}
 	}
-	
 	#openSearch {
 		margin-right: 30px;
 		font-size: 14px;
@@ -84,12 +84,10 @@ header {
 		text-align: center;
 		box-sizing: border-box;
 		transition: $transition;
-		
 		&:hover {
 			border-color: #777;
 		}
 	}
-	
 	#lblSearch {
 		position: absolute;
 		top: -75px;
@@ -97,23 +95,19 @@ header {
 		display: block;
 		width: 100%;
 		height: 100%;
-		
 		span {
 			position: absolute;
 			font-size: 28px;
 			top: calc(50% - 16px);
 			cursor: pointer;
 			transition: $transition;
-			
 			&:hover {
-				color: $color-white;
+				color: $lightgray;
 			}
 		}
-		
 		.fa-search { left: 20px; }
 		.fa-times { right: 20px; }
 	}
-	
 	#txtSearch {
 		display: block;
 		width: 100%;
@@ -122,35 +116,33 @@ header {
 		background-color: rgba(0, 0, 0, 0.95);
 		outline: none;
 		padding: 0 70px;
-		font-family: $font-title;
+		font-family: $fontTitle;
 		font-size: 34px;
-		color: $color-white;
-		
+		color: $lightgray;
 		&::placeholder { color: #666; }
 	}
 }
 
 /* Footer style */
-
 footer {
 	display: block;
 	width: 100%;
 	min-height: 130px;
-	background-color: $color-dark;
+	background-color: $dark;
 	padding: 30px;
-	
 	.copyright {
+		@extend %block-between;
 		padding-top: 10px;
 		margin-top: 10px;
 		border-top: 1px solid rgba(149, 152, 154, 0.3);
-		font-size: $font-size-small;
+		font-size: 12px;
 	}
-	
 	.footer-media {
+		@extend %block-center;
 		a {
-			color: $color-dark;
+			color: $dark;
 			display: inline-block;
-			font-size: $font-size-medium;
+			font-size: 16px;
 			line-height: 30px;
 			width: 30px;
 			text-align: center;
@@ -159,9 +151,8 @@ footer {
 			margin: 0 2px;
 			transition: $transition;
 			span { color: inherit; }
-			&:hover { color: $color-white; }
+			&:hover { color: $lightgray; }
 		}
-		
 		li {
 			@each $index, $color in (1, #4267B2), (2, #1DA1F3), (3, #C93030) {
 				&:nth-child(#{$index}) a:hover { background-color: $color; }
@@ -171,15 +162,12 @@ footer {
 }
 
 /* Home style */
-
 #pageHome {
 	.banner-home {
 		width: 100%;
 		max-height: 100vh;
 		overflow: hidden;
-		
 		img { width: 100%; }
-		
 		.opacity-banner {
 			position: absolute;
 			top: 0;
@@ -188,7 +176,6 @@ footer {
 			height: 100vh;
 			background-color: rgba(0, 0, 0, 0.6);
 		}
-		
 		.control-banner {
 			display: block;
 			height: 10px;
@@ -196,8 +183,13 @@ footer {
 			position: absolute;
 			bottom: 0;
 			background-color: rgba(0, 0, 0, 0.5);
+			span {
+				display: block;
+				height: 100%;
+				width: calc(100% / 4);
+				background-color: $rojo;
+			}
 		}
-		
 		.banner-detail {
 			position: absolute;
 			top: 150px;
@@ -207,65 +199,200 @@ footer {
 			background-color: rgba(0, 0, 0, 0.85);
 			border-radius: 5px;
 			padding: 20px;
-			
 			h3 {
-				font-family: $font-title;
+				font-family: $fontTitle;
 				font-size: 30px;
 				color: #EBEBEB;
-				
 				span {
-					font-size: $font-size-small;
-					color: $color-white;
+					font-size: 12px;
+					color: $lightgray;
 				}
 			}
-			
 			.star-ranking {
 				display: flex;
 				border-bottom: 1px solid #303030;
 				padding-bottom: 10px;
-				
 				li {
-					color: $color-yellow;
+					color: $ambar;
 					font-size: 22px;
 					margin-right: 2px;
 				}
 			}
-			
 			.banner-description {
-				color: $color-white;
+				color: $lightgray;
 				margin: 15px 0 30px 0;
-				font-size: $font-size;
+				font-size: 14px;
 			}
-			
 			.banner-options {
+				@extend %block-between;
 				li { margin-right: 5px; }
-				
 				.fa {
 					font-size: 22px;
-					color: $color-red-25;
-					-webkit-text-stroke: 1px $color-red-base;
+					color: $rojo-25;
+					-webkit-text-stroke: 1px $rojo;
 					cursor: pointer;
 					transition: $transition;
-					
-					&:hover { color: $color-red-base; }
+					&:hover { color: $rojo; }
 				}
-				
 				a {
 					display: block;
 					line-height: 30px;
 					width: 120px;
-					font-size: $font-size-small;
-					color: $color-white;
-					background-color: $color-yellow-25;
-					border: 1px solid $color-yellow;
+					font-size: 12px;
+					color: $lightgray;
+					background-color: $ambar-25;
+					border: 1px solid $ambar;
 					border-radius: 5px;
 					text-align: center;
 					text-decoration: none;
 					transition: $transition;
-					
-					&:hover { background-color: $color-yellow; }
+					&:hover { background-color: $ambar; }
+				}
+			}
+		}
+	}
+
+	#estrenos {
+		position: relative;
+		padding: 80px 0;
+		h3 {
+			font-family: $fontTitle;
+			font-size: 40px;
+			text-transform: uppercase;
+			color: $negroBase;
+			text-align: center;
+			margin-bottom: 40px;
+		}
+		#lista-estrenos {
+			& > div:not(.scrollbar) {
+				@extend %block-between;
+				overflow: hidden;
+				width: 92%;
+				margin: auto;
+				padding-bottom: 30px;
+				position: relative;
+				cursor: pointer;
+				-webkit-user-select: none;
+				article {
+					cursor: pointer;
+					&:not(:last-child){ margin-right: 30px; }
+					& > div:not(.detalle) {
+						position: relative;
+						&:hover .hover { opacity: 1; }
+						.hover {
+							@extend %block-center;
+							transition: $transition;
+							opacity: 0;
+							position: absolute;
+							width: 100%;
+							height: 100%;
+							top: 0;
+							left: 0;
+							background-color: rgba(0, 0, 0, 0.85);
+							.fa-play {
+								color: $ambar;
+								background-color: $ambar-25;
+								border: 1px solid $ambar;
+								line-height: 43px;
+								width: 45px;
+								display: block;
+								text-align: center;
+								border-radius: 50%;
+								font-size: 20px;
+								padding-left: 3px;
+								transition: $transition;
+								&:hover {
+									background-color: $ambar;
+									color: #fff;
+								}
+							}
+							.clasificacion {
+								position: absolute;
+								top: 10px;
+								width: 100%;
+								padding: 0 15px;
+								@extend %block-between;
+								.fa-star, .fa-star-half-o {
+									color: $ambar;
+									font-size: 15px;
+								}
+								.fa-heart, .fa-bookmark {
+									color: $rojo-25;
+									-webkit-text-stroke: 1px $rojo;
+									font-size: 20px;
+									margin-left: 3px;
+									transition: $transition;
+									&:hover { color: $rojo; }
+								}
+							}
+						}
+						img {
+							display: block;
+							height: 100%;
+						}
+					}
+					.detalle {
+						padding: 15px;
+						background-color: $lightgray;
+						h4 {
+							font-family: $fontTitle;
+							font-size: 26px;
+						}
+						h5 {
+							font-family: $fontGeneral;
+							font-weight: 500;
+							font-size: 16px;
+						}
+					}
+				}
+			}
+			.scrollbar {
+				display: block;
+				width: 92%;
+				height: 10px;
+				background-color: $lightgray;
+				margin: auto;
+				span {
+					display: block;
+					width: 500px;
+					background-color: $rojo;
+					height: 100%;
+					cursor: pointer;
+				}
+			}
+		}
+		#control-estrenos {
+			position: absolute;
+			top: calc(50% - 40px);
+			width: 100%;
+			span {
+				font-size: 80px;
+				-webkit-text-stroke: 3px $rojo;
+				opacity: 0.4;
+				position: absolute;
+				color: transparent;
+				cursor: pointer;
+				transition: $transition;
+				&.fa-caret-right { right: 0; }
+				&.fa-caret-left { left: 0; }
+				&:hover {
+					color: $rojo;
+					opacity: 1;
 				}
 			}
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

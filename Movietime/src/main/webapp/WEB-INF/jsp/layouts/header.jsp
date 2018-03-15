@@ -1,10 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<header class="block-between">
-	<div id="logoHeader" class="block-center">
+<header>
+	<div id="logoHeader">
 		<a href="${pageContext.request.contextPath}/home"><img src="resources/images/logo-movietime.png" alt="Logo MovieTime" /></a>
 	</div>
-	<div class="block-center">
+	<div>
 		<span id="openSearch" class="fa fa-search"></span>
 		<ul id="menuHeader">
 			<li><a href="#">Estrenos</a></li>
